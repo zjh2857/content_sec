@@ -17,5 +17,4 @@ CREATE TABLE IF NOT EXISTS detech_log(
     param VARCHAR(10000) ,
     time DATE NOT NULL,
     tradehash VARCHAR(128) NOT NULL
-
 );

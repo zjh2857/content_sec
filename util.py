@@ -1,3 +1,6 @@
+from sqlalchemy import true
+
+
 class node():
     def __init__(self,c):
         self.next = {}
@@ -46,6 +49,6 @@ class ac_auto():
             else:
                 cur = cur.next[c]
         if cur.end:
-            print("ok")
+            return True
         else:
-            print("fail")
+            return False

@@ -131,7 +131,9 @@ def detech():
         if not ac.search(execlist):
             cursor.execute("INSERT INTO detech_log (user_addr, contract_addr,param,time,tradehash) VALUES (%s,%s,%s,%s,%s)",(_from,to,param,time,tradehash))
             db.commit()
-        return "warning"
+            return "warning"
+        else:
+            return "ok"
     else:
         try:
             cursor.execute("SELECT * FROM detech_log ")
@@ -144,9 +146,9 @@ def deal():
     tradehash = request.args.get("tradehash")
     action = request.args.get("action")
     if action == "ok":
-        cursor.execute("DELETE detech_log WHERE tradehash=%s",(tradehash))
+        cursor.execute("DELETE FROM detech_log WHERE tradehash=%s",(tradehash))
         db.commit()
-        return redirect("/train?tradehash="+tradehash)
+        return redirect("/train.html?tradehash="+tradehash)
     else :
         return "not implement"
 app.run(debug=True)
