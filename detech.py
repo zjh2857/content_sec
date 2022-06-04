@@ -1,3 +1,4 @@
+from tokenize import group
 import requests
 import json
 import pickle
@@ -41,10 +42,10 @@ while True :
     to = response.json()["result"]["to"]
     try:
         f = open(to,"rb")
-        ac = pickle.load(f)
+        group = pickle.load(f)
         f.close()
     except:
         print("aaa")
-        ac = ac_auto()
+        group = ac_auto()
     ac.search(execlist)
     
